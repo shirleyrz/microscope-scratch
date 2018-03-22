@@ -20,7 +20,11 @@ shell-server@0.3.1            # Server-side component of the `meteor shell` comm
 twbs:bootstrap
 session
 iron:router
+sacha:spin
 ian:accounts-ui-bootstrap-3
 accounts-password
-sacha:spin
+
 underscore
+jquery
+check
+audit-argument-checks
