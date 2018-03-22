@@ -1,3 +1,3 @@
 Meteor.publish('posts', function(author) {
-    return Posts.find({flagged: false, author: author});
+    return Posts.find({ author: author});
 });
