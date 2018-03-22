@@ -1,18 +1,23 @@
 Template.postSubmit.events({
     'submit form': function(e) {
         e.preventDefault();
+
         var post = {
             url: $(e.target).find('[name=url]').val(),
             title: $(e.target).find('[name=title]').val()
         };
+
         Meteor.call('postInsert', post, function(error, result) {
-            // 向用户显示错误信息并终止
+            // display the error to the user and abort
             if (error)
                 return alert(error.reason);
-            // 显示结果，跳转页面
+
+            // show this result but route anyway
             if (result.postExists)
-                alert('This link has already been posted（该链接已经存在）');
-            Router.go('postPage', {_id: result._id});
+                alert('This link has already been posted');
         });
+
+        Router.go('postsList');
+
     }
 });
