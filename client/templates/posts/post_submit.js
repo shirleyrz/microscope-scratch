@@ -6,9 +6,12 @@ Template.postSubmit.events({
             title: $(e.target).find('[name=title]').val()
         };
         Meteor.call('postInsert', post, function(error, result) {
-            // 显示错误信息并退出
+            // 向用户显示错误信息并终止
             if (error)
                 return alert(error.reason);
+            // 显示结果，跳转页面
+            if (result.postExists)
+                alert('This link has already been posted（该链接已经存在）');
             Router.go('postPage', {_id: result._id});
         });
     }
